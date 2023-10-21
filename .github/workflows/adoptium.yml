@@ -1,10 +1,10 @@
-name: task-correttob
+name: adoptium-build
 
 on: workflow_dispatch
 
 jobs:
   java-docker-images:
-    name: "java-docker-images:corretto_${{ matrix.tag }}"
+    name: "java-docker-images:adoptium_${{ matrix.tag }}"
     runs-on: ubuntu-latest
     strategy:
       matrix:
@@ -34,20 +34,20 @@ jobs:
           password: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Docker meta
-        id: meta_corretto
+        id: meta_adoptium
         uses: docker/metadata-action@v4
         with:
           images: |
-            ghcr.io/en0tuk/java-docker-images
+            ghcr.io/en0tuk/adoptium
           tags: |
-            corretto_${{ matrix.tag }}
+            ${{ matrix.tag }}
             
       - name: Build and push images
         uses: docker/build-push-action@v3
         with:
           context: .
-          file: ./Amazon Corretto/${{ matrix.tag }}/Dockerfile
+          file: ./Adoptium/${{ matrix.tag }}/Dockerfile
           platforms: linux/amd64,linux/arm64
           push: ${{ github.event_name != 'pull_request' }}
-          tags: ${{ steps.meta_corretto.outputs.tags }}
-          labels: ${{ steps.meta_corretto.outputs.labels }}
+          tags: ${{ steps.meta_adoptium.outputs.tags }}
+          labels: ${{ steps.meta_adoptium.outputs.labels }}
