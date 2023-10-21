@@ -10,8 +10,8 @@ jobs:
       matrix:
         tag:
           - 11
-          # - 17
-          # - 19
+          - 17
+          - 19
           - 21
     steps:
       - name: Checkout
