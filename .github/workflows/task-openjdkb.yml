@@ -39,7 +39,7 @@ jobs:
           images: |
             ghcr.io/vovamod/java-docker-images
           tags: |
-            openjdk_{{ matrix.tag }}
+            openjdk_${{ matrix.tag }}
             
       - name: Build and push images
         uses: docker/build-push-action@v3
