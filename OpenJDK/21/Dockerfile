@@ -3,7 +3,7 @@
 # Environment: Java
 # Minimum Panel Version: 1.7.0
 # ----------------------------------
-FROM --platform=$TARGETOS/$TARGETARCH openjdk:21
+FROM --platform=$TARGETOS/$TARGETARCH openjdk:21-jdk-bullseye
 
 MAINTAINER vovamod, <veganetworkmain@gmail.com>
 
