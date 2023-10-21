@@ -9,6 +9,10 @@ jobs:
     strategy:
       matrix:
         tag:
+          - 8
+          - 11
+          - 17
+          - 19
           - 21
     steps:
       - name: Checkout
@@ -34,7 +38,7 @@ jobs:
         uses: docker/metadata-action@v4
         with:
           images: |
-            ghcr.io/vovamod/java-docker-images
+            ghcr.io/en0tuk/java-docker-images
           tags: |
             adoptium_${{ matrix.tag }}
             
