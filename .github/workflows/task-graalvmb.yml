@@ -48,7 +48,7 @@ jobs:
       - name: Build and push images
         uses: docker/build-push-action@v3
         with:
-          context: GraalVM/${{ matrix.tag }}
+          context: ./GraalVM/${{ matrix.tag }}
           file: Dockerfile
           platforms: linux/amd64,linux/arm64
           push: ${{ github.event_name != 'pull_request' }}
