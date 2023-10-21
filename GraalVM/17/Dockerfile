@@ -11,6 +11,7 @@ ARG GRAAL_VERSION=22.3.3
 MAINTAINER vovamod, <veganetworkmain@gmail.com>
 
 ENV LANG='en_US.UTF-8' LANGUAGE='en_US:en' LC_ALL='en_US.UTF-8'
+ENV DEBIAN_FRONTEND=noninteractive
 
 RUN apt-get update -y \
   && apt-get install -y curl ca-certificates openssl git tar sqlite3 fontconfig tzdata locales iproute2 \
