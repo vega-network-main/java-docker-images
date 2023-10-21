@@ -40,7 +40,7 @@ jobs:
           images: |
             ghcr.io/vovamod/java-docker-images
           tags: |
-            corretto_{{ matrix.tag }}
+            corretto_${{ matrix.tag }}
             
       - name: Build and push images
         uses: docker/build-push-action@v3
