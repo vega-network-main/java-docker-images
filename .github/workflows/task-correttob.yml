@@ -46,7 +46,7 @@ jobs:
         uses: docker/build-push-action@v3
         with:
           context: .
-          file: ./Amazon  Corretto/${{ matrix.tag }}/Dockerfile
+          file: ./Amazon Corretto/${{ matrix.tag }}/Dockerfile
           platforms: linux/amd64,linux/arm64
           push: ${{ github.event_name != 'pull_request' }}
           tags: ${{ steps.meta_corretto.outputs.tags }}
