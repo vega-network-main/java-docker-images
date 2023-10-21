@@ -3,15 +3,15 @@
 # Environment: Java
 # Minimum Panel Version: 1.7.0
 # ----------------------------------
-FROM --platform=$TARGETOS/$TARGETARCH ghcr.io/graalvm/jdk-community:19
+FROM --platform=$TARGETOS/$TARGETARCH ghcr.io/graalvm/graalvm-ce:ol9-java11
 
 MAINTAINER vovamod, <veganetworkmain@gmail.com>
 
 ENV LANG='en_US.UTF-8' LANGUAGE='en_US:en' LC_ALL='en_US.UTF-8'
 ENV DEBIAN_FRONTEND=noninteractive
 
-RUN dnf update -y \
-  && dnf install -y curl ca-certificates openssl git tar sqlite3 fontconfig tzdata locales iproute2
+RUN yum update -y \
+  && yum install -y curl ca-certificates openssl git tar sqlite3 fontconfig tzdata locales iproute2
 
 
 RUN useradd -d /home/container -m container

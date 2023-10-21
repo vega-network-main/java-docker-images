@@ -11,7 +11,7 @@ jobs:
         tag:
           - 11
           - 17
-          - 19
+          # - 19
           - 21
     steps:
       - name: Checkout
