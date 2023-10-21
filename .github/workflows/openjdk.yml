@@ -1,4 +1,4 @@
-name: task-openjdkb
+name: openjdk-build
 
 on: workflow_dispatch
 
@@ -37,9 +37,9 @@ jobs:
         uses: docker/metadata-action@v4
         with:
           images: |
-            ghcr.io/en0tuk/java-docker-images
+            ghcr.io/en0tuk/openjdk
           tags: |
-            openjdk_${{ matrix.tag }}
+            ${{ matrix.tag }}
             
       - name: Build and push images
         uses: docker/build-push-action@v3
