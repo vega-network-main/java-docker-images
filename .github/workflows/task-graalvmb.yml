@@ -13,10 +13,10 @@ jobs:
     strategy:
       matrix:
         tag:
-          - 11_GraalVM
-          - 17_GraalVM
-          - 19_GraalVM
-          - 21_GraalVM
+          - 11
+          - 17
+          - 19
+          - 21
     steps:
       - name: Checkout
         uses: actions/checkout@v3
