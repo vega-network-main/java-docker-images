@@ -39,7 +39,7 @@ jobs:
           images: |
             ghcr.io/vovamod/java-docker-images
           tags: |
-            graalvm_{{ matrix.tag }}
+            graalvm_${{ matrix.tag }}
             
       - name: Build and push images
         uses: docker/build-push-action@v3
