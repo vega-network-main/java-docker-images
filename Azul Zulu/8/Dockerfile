@@ -3,7 +3,7 @@
 # Environment: Java
 # Minimum Panel Version: 1.7.0
 # ----------------------------------
-FROM --platform=$TARGETOS/$TARGETARCH azul/zulu-openjdk:8u382-jdk-jammy
+FROM --platform=$TARGETOS/$TARGETARCH azul/zulu-openjdk:8u382
 
 MAINTAINER vovamod, <veganetworkmain@gmail.com>
 
