@@ -4,7 +4,7 @@ on: workflow_dispatch
 
 jobs:
   java-docker-images:
-    name: "java-docker-images:${{ matrix.tag }}"
+    name: "java-docker-images:graalvm_${{ matrix.tag }}"
     runs-on: ubuntu-latest
     strategy:
       matrix:
