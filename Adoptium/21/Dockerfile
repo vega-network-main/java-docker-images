@@ -3,7 +3,7 @@
 # Environment: Java
 # Minimum Panel Version: 1.7.0
 # ----------------------------------
-FROM --platform=$TARGETOS/$TARGETARCH eclipse-temurin:21-jdk-alpine
+FROM --platform=$TARGETOS/$TARGETARCH eclipse-temurin:21-jdk-jammy
 
 # ARG TARGETPLATFORM
 ARG ADOPTIUM_VERSION=21_35
