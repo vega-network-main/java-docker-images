@@ -1,10 +1,10 @@
-name: task-graalvmb
+name: task-adoptiumb
 
 on: workflow_dispatch
 
 jobs:
   java-docker-images:
-    name: "java-docker-images:graalvm_${{ matrix.tag }}"
+    name: "java-docker-images:adoptium_${{ matrix.tag }}"
     runs-on: ubuntu-latest
     strategy:
       matrix:
@@ -34,13 +34,13 @@ jobs:
           password: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Docker meta
-        id: meta_graalvm
+        id: meta_adoptium
         uses: docker/metadata-action@v4
         with:
           images: |
             ghcr.io/vovamod/java-docker-images
           tags: |
-            graalvm_{{ matrix.tag }}
+            adoptium_{{ matrix.tag }}
             
       - name: Build and push images
         uses: docker/build-push-action@v3
@@ -49,5 +49,5 @@ jobs:
           file: ./Adoptium/${{ matrix.tag }}/Dockerfile
           platforms: linux/amd64,linux/arm64
           push: ${{ github.event_name != 'pull_request' }}
-          tags: ${{ steps.meta_graalvm.outputs.tags }}
-          labels: ${{ steps.meta_graalvm.outputs.labels }}
+          tags: ${{ steps.meta_adoptium.outputs.tags }}
+          labels: ${{ steps.meta_adoptium.outputs.labels }}
