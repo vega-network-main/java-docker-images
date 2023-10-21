@@ -40,7 +40,7 @@ jobs:
           images: |
             ghcr.io/vovamod/java-docker-images
           tags: |
-            adoptium_{{ matrix.tag }}
+            adoptium_${{ matrix.tag }}
             
       - name: Build and push images
         uses: docker/build-push-action@v3
