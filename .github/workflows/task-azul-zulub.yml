@@ -9,6 +9,7 @@ jobs:
     strategy:
       matrix:
         tag:
+          - 8
           - 11
           - 17
           - 21
