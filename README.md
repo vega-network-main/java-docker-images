@@ -1,4 +1,4 @@
-![Монтажная область 12](https://github.com/vovamod/java-docker-images/assets/61664874/9c50241d-9c16-437a-825b-ef5ec5b075ed)
+![Монтажная область 12](https://github.com/vovamod/java-docker-images/assets/61664874/4d523ea9-6fe1-4591-88f3-289f336560a9)
 # Java Docker Images
 Java Docker Images for Pterodactyl panel or any Docker Container
 
