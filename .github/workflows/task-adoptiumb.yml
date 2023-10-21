@@ -9,6 +9,10 @@ jobs:
     strategy:
       matrix:
         tag:
+          - 8
+          - 11
+          - 17
+          - 19
           - 21
     steps:
       - name: Checkout
