@@ -1,10 +1,10 @@
-name: task-graalvmb
+name: openjdk-build
 
 on: workflow_dispatch
 
 jobs:
   java-docker-images:
-    name: "java-docker-images:graalvm_${{ matrix.tag }}"
+    name: "java-docker-images:openjdk_${{ matrix.tag }}"
     runs-on: ubuntu-latest
     strategy:
       matrix:
@@ -33,20 +33,20 @@ jobs:
           password: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Docker meta
-        id: meta_graalvm
+        id: meta_openjdk
         uses: docker/metadata-action@v4
         with:
           images: |
-            ghcr.io/vovamod/java-docker-images
+            ghcr.io/en0tuk/openjdk
           tags: |
-            graalvm_${{ matrix.tag }}
+            ${{ matrix.tag }}
             
       - name: Build and push images
         uses: docker/build-push-action@v3
         with:
           context: .
-          file: ./GraalVM/${{ matrix.tag }}/Dockerfile
+          file: ./OpenJDK/${{ matrix.tag }}/Dockerfile
           platforms: linux/amd64,linux/arm64
           push: ${{ github.event_name != 'pull_request' }}
-          tags: ${{ steps.meta_graalvm.outputs.tags }}
-          labels: ${{ steps.meta_graalvm.outputs.labels }}
+          tags: ${{ steps.meta_openjdk.outputs.tags }}
+          labels: ${{ steps.meta_openjdk.outputs.labels }}

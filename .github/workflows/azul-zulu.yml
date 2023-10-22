@@ -1,10 +1,10 @@
-name: task-correttob
+name: azul-zulu-build
 
 on: workflow_dispatch
 
 jobs:
   java-docker-images:
-    name: "java-docker-images:corretto_${{ matrix.tag }}"
+    name: "java-docker-images:zulu_${{ matrix.tag }}"
     runs-on: ubuntu-latest
     strategy:
       matrix:
@@ -12,7 +12,6 @@ jobs:
           - 8
           - 11
           - 17
-          - 19
           - 21
     steps:
       - name: Checkout
@@ -34,20 +33,20 @@ jobs:
           password: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Docker meta
-        id: meta_corretto
+        id: meta_azulzulu
         uses: docker/metadata-action@v4
         with:
           images: |
-            ghcr.io/vovamod/java-docker-images
+            ghcr.io/en0tuk/azul-zulu
           tags: |
-            corretto_${{ matrix.tag }}
+            ${{ matrix.tag }}
             
       - name: Build and push images
         uses: docker/build-push-action@v3
         with:
           context: .
-          file: ./Amazon Corretto/${{ matrix.tag }}/Dockerfile
+          file: ./Azul Zulu/${{ matrix.tag }}/Dockerfile
           platforms: linux/amd64,linux/arm64
           push: ${{ github.event_name != 'pull_request' }}
-          tags: ${{ steps.meta_corretto.outputs.tags }}
-          labels: ${{ steps.meta_corretto.outputs.labels }}
+          tags: ${{ steps.meta_azulzulu.outputs.tags }}
+          labels: ${{ steps.meta_azulzulu.outputs.labels }}

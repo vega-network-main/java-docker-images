@@ -1,14 +1,15 @@
-name: task-openjdkb
+name: amazon-corretto-build
 
 on: workflow_dispatch
 
 jobs:
   java-docker-images:
-    name: "java-docker-images:openjdk_${{ matrix.tag }}"
+    name: "java-docker-images:corretto_${{ matrix.tag }}"
     runs-on: ubuntu-latest
     strategy:
       matrix:
         tag:
+          - 8
           - 11
           - 17
           - 19
@@ -33,20 +34,20 @@ jobs:
           password: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Docker meta
-        id: meta_openjdk
+        id: meta_corretto
         uses: docker/metadata-action@v4
         with:
           images: |
-            ghcr.io/vovamod/java-docker-images
+            ghcr.io/en0tuk/amazon-corretto
           tags: |
-            openjdk_${{ matrix.tag }}
+            ${{ matrix.tag }}
             
       - name: Build and push images
         uses: docker/build-push-action@v3
         with:
           context: .
-          file: ./OpenJDK/${{ matrix.tag }}/Dockerfile
+          file: ./Amazon Corretto/${{ matrix.tag }}/Dockerfile
           platforms: linux/amd64,linux/arm64
           push: ${{ github.event_name != 'pull_request' }}
-          tags: ${{ steps.meta_openjdk.outputs.tags }}
-          labels: ${{ steps.meta_openjdk.outputs.labels }}
+          tags: ${{ steps.meta_corretto.outputs.tags }}
+          labels: ${{ steps.meta_corretto.outputs.labels }}
