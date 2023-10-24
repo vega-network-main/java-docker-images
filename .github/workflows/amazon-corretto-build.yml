@@ -3,10 +3,10 @@ name: amazon-corretto-build
 on: workflow_dispatch
 
 permissions:
-  contents: read|write
-  pull-requests: read|write 
+  contents: write
+  pull-requests: write 
   issues: read
-  packages: read|write
+  packages: write
 
 jobs:
   java-docker-images:
