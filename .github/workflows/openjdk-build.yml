@@ -37,7 +37,7 @@ jobs:
         uses: docker/metadata-action@v4
         with:
           images: |
-            ghcr.io/VEGA-Network-DEV/openjdk
+            ghcr.io/vega-network-main/openjdk
           tags: |
             ${{ matrix.tag }}
             
