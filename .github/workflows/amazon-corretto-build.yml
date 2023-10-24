@@ -2,6 +2,12 @@ name: amazon-corretto-build
 
 on: workflow_dispatch
 
+permissions:
+  contents: read|write
+  pull-requests: read|write 
+  issues: read
+  packages: read|write
+
 jobs:
   java-docker-images:
     name: "java-docker-images:corretto_${{ matrix.tag }}"
