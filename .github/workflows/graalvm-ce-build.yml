@@ -2,6 +2,12 @@ name: graalvm-ce-build
 
 on: workflow_dispatch
 
+permissions:
+  contents: write
+  pull-requests: write 
+  issues: read
+  packages: write
+
 jobs:
   java-docker-images:
     name: "java-docker-images:graalvm_${{ matrix.tag }}"
