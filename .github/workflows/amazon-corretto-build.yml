@@ -38,7 +38,7 @@ jobs:
         uses: docker/metadata-action@v4
         with:
           images: |
-            ghcr.io/vovamod/amazon-corretto
+            ghcr.io/vega-network/amazon-corretto
           tags: |
             ${{ matrix.tag }}
             

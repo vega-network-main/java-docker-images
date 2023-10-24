@@ -38,7 +38,7 @@ jobs:
         uses: docker/metadata-action@v4
         with:
           images: |
-            ghcr.io/vovamod/adoptium
+            ghcr.io/vega-network/adoptium
           tags: |
             ${{ matrix.tag }}
             
