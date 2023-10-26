@@ -11,7 +11,7 @@ permissions:
 jobs:
   java-docker-images:
     name: "java-docker-images:graalvm_${{ matrix.tag }}"
-    runs-on: self-hosted
+    runs-on: ubuntu-latest
     strategy:
       matrix:
         tag:
