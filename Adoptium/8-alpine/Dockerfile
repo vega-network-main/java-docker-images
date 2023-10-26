@@ -14,7 +14,7 @@ RUN apk update --no-cache \
   && apk add curl ca-certificates openssl git tar sqlite fontconfig tzdata iproute2
 
 
-RUN useradd -d /home/container -m container
+RUN adduser -D -h /home/container container
 USER        container
 ENV         USER=container HOME=/home/container
 WORKDIR     /home/container
