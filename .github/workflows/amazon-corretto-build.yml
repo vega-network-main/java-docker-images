@@ -9,7 +9,7 @@ permissions:
   packages: write
 
 jobs:
-  java-docker-images:
+  build:
     name: "java-docker-images:corretto_${{ matrix.tag }}"
     runs-on: ubuntu-latest
     strategy:
@@ -54,6 +54,55 @@ jobs:
           context: .
           file: ./Amazon Corretto/${{ matrix.tag }}/Dockerfile
           platforms: linux/amd64,linux/arm64
+          push: ${{ github.event_name != 'pull_request' }}
+          tags: ${{ steps.meta_corretto.outputs.tags }}
+          labels: ${{ steps.meta_corretto.outputs.labels }}
+
+  build-alpine:
+    name: "java-docker-images:corretto_${{ matrix.tag }}"
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        tag:
+          - 8-alpine
+          - 11-alpine
+          - 17-alpine
+          - 19-alpine
+          - 21-alpine
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+      
+      - name: Set up QEMU
+        uses: docker/setup-qemu-action@v2
+        
+      - name: Set up Docker Buildx
+        id: buildx
+        uses: docker/setup-buildx-action@v2
+
+      - name: Login to GHCR
+        if: github.event_name != 'pull_request'
+        uses: docker/login-action@v2
+        with:
+          registry: ghcr.io
+          username: ${{ github.repository_owner }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Docker meta
+        id: meta_corretto
+        uses: docker/metadata-action@v4
+        with:
+          images: |
+            ghcr.io/vega-network-main/amazon-corretto
+          tags: |
+            ${{ matrix.tag }}
+            
+      - name: Build and push images
+        uses: docker/build-push-action@v3
+        with:
+          context: .
+          file: ./Amazon Corretto/${{ matrix.tag }}/Dockerfile
+          platforms: linux/amd64
           push: ${{ github.event_name != 'pull_request' }}
           tags: ${{ steps.meta_corretto.outputs.tags }}
           labels: ${{ steps.meta_corretto.outputs.labels }}
