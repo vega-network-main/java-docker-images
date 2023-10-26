@@ -43,7 +43,7 @@ jobs:
         uses: docker/metadata-action@v4
         with:
           images: |
-            ghcr.io/vega-network-main/graalvm-ce
+            ghcr.io/en0tuk/graalvm-ce
           tags: |
             ${{ matrix.tag }}
             
