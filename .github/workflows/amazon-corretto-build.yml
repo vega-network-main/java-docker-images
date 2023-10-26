@@ -44,7 +44,7 @@ jobs:
         uses: docker/metadata-action@v4
         with:
           images: |
-            ghcr.io/en0tuk/amazon-corretto
+            ghcr.io/vega-network-main/amazon-corretto
           tags: |
             ${{ matrix.tag }}
             
@@ -93,7 +93,7 @@ jobs:
         uses: docker/metadata-action@v4
         with:
           images: |
-            ghcr.io/en0tuk/amazon-corretto
+            ghcr.io/vega-network-main/amazon-corretto
           tags: |
             ${{ matrix.tag }}
             

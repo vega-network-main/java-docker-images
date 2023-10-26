@@ -43,7 +43,7 @@ jobs:
         uses: docker/metadata-action@v4
         with:
           images: |
-            ghcr.io/en0tuk/azul-zulu
+            ghcr.io/vega-network-main/azul-zulu
           tags: |
             ${{ matrix.tag }}
             
