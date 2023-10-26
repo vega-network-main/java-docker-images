@@ -66,11 +66,11 @@ jobs:
     strategy:
       matrix:
         tag:
-          - 8
-          - 11
-          - 17
-          - 19
-          - 21
+          - 8-alpine
+          - 11-alpine
+          - 17-alpine
+          - 19-alpine
+          - 21-alpine
     steps:
       - name: Checkout
         uses: actions/checkout@v3
