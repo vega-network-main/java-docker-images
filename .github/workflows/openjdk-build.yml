@@ -15,8 +15,6 @@ jobs:
     strategy:
       matrix:
         tag:
-          - 17-alpine
-          - 19-alpine
           - 11
           - 17
           - 19
