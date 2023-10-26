@@ -9,12 +9,17 @@ permissions:
   packages: write
 
 jobs:
-  java-docker-images:
+  build:
     name: "java-docker-images:corretto_${{ matrix.tag }}"
     runs-on: ubuntu-latest
     strategy:
       matrix:
         tag:
+          - 8-alpine
+          - 11-alpine
+          - 17-alpine
+          - 19-alpine
+          - 21-alpine
           - 8
           - 11
           - 17
