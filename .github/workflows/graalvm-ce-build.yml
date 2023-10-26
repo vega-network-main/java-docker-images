@@ -11,7 +11,7 @@ permissions:
 jobs:
   java-docker-images:
     name: "java-docker-images:graalvm_${{ matrix.tag }}"
-    runs-on: ubuntu-latest
+    runs-on: self-hosted
     strategy:
       matrix:
         tag:
@@ -43,7 +43,7 @@ jobs:
         uses: docker/metadata-action@v4
         with:
           images: |
-            ghcr.io/vega-network-main/graalvm-ce
+            ghcr.io/en0tuk/graalvm-ce
           tags: |
             ${{ matrix.tag }}
             

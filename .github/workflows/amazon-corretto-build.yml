@@ -11,7 +11,7 @@ permissions:
 jobs:
   java-docker-images:
     name: "java-docker-images:corretto_${{ matrix.tag }}"
-    runs-on: ubuntu-latest
+    runs-on: self-hosted
     strategy:
       matrix:
         tag:
@@ -44,7 +44,7 @@ jobs:
         uses: docker/metadata-action@v4
         with:
           images: |
-            ghcr.io/vega-network-main/amazon-corretto
+            ghcr.io/en0tuk/amazon-corretto
           tags: |
             ${{ matrix.tag }}
             
