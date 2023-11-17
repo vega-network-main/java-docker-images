@@ -44,7 +44,7 @@ jobs:
         uses: docker/metadata-action@v4
         with:
           images: |
-            ghcr.io/vega-network-main/adoptium
+            ghcr.io/${{ github.repository_owner }}/adoptium
           tags: |
             ${{ matrix.tag }}
             
@@ -93,7 +93,7 @@ jobs:
         uses: docker/metadata-action@v4
         with:
           images: |
-            ghcr.io/vega-network-main/adoptium
+            ghcr.io/${{ github.repository_owner }}/adoptium
           tags: |
             ${{ matrix.tag }}
             
