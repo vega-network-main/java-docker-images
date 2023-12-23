@@ -56,3 +56,5 @@ jobs:
           push: ${{ github.event_name != 'pull_request' }}
           tags: ${{ steps.meta_azulzulu.outputs.tags }}
           labels: ${{ steps.meta_azulzulu.outputs.labels }}
+          build-args: |
+            "GITHUB_USER=${{ github.repository_owner }}"

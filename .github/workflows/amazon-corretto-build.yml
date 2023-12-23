@@ -57,6 +57,8 @@ jobs:
           push: ${{ github.event_name != 'pull_request' }}
           tags: ${{ steps.meta_corretto.outputs.tags }}
           labels: ${{ steps.meta_corretto.outputs.labels }}
+          build-args: |
+            "GITHUB_USER=${{ github.repository_owner }}"
 
   build-alpine:
     name: "java-docker-images:corretto_${{ matrix.tag }}"
@@ -106,3 +108,5 @@ jobs:
           push: ${{ github.event_name != 'pull_request' }}
           tags: ${{ steps.meta_corretto.outputs.tags }}
           labels: ${{ steps.meta_corretto.outputs.labels }}
+          build-args: |
+            "GITHUB_USER=${{ github.repository_owner }}"
