@@ -5,10 +5,11 @@
 # ----------------------------------
 FROM --platform=$TARGETOS/$TARGETARCH amazoncorretto:21.0.1
 
-MAINTAINER vovamod, <veganetworkmain@gmail.com>
+LABEL authors="vovamod <veganetworkmain@gmail.com>,en0tuk <kolobokovich123@gmail.com>"
 
 ARG GITHUB_USER
 ENV GITHUB_USER ${GITHUB_USER}
+
 ENV LANG='en_US.UTF-8' LANGUAGE='en_US:en' LC_ALL='en_US.UTF-8'
 ENV DEBIAN_FRONTEND=noninteractive
 

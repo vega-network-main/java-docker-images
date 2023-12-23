@@ -56,3 +56,5 @@ jobs:
           push: ${{ github.event_name != 'pull_request' }}
           tags: ${{ steps.meta_graalvm.outputs.tags }}
           labels: ${{ steps.meta_graalvm.outputs.labels }}
+          build-args: |
+            "GITHUB_USER=${{ github.repository_owner }}"
