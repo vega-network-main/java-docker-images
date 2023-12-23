@@ -34,7 +34,7 @@ export INTERNAL_IP
 cd /home/container || exit 1
 
 # Print Java version
-printf "\u001b[1m\u001b[36mvega@container~ \u001b[0mjava -version\n"
+printf "\u001b[1m\u001b[36m${GITHUB_USER}@image~ \u001b[0mjava -version\n"
 java -version
 
 # Convert all of the "{{VARIABLE}}" parts of the command into the expected shell
@@ -44,6 +44,6 @@ PARSED=$(echo "${STARTUP}" | sed -e 's/{{/${/g' -e 's/}}/}/g' | eval echo "$(cat
 
 # Display the command we're running in the output, and then execute it with the env
 # from the container itself.
-printf "\u001b[1m\u001b[36mvega@container~ \u001b[0m%s\n" "$PARSED"
+printf "\u001b[1m\u001b[36m${GITHUB_USER}@image~ \u001b[0m%s\n" "$PARSED"
 # shellcheck disable=SC2086
 eval ${PARSED}
