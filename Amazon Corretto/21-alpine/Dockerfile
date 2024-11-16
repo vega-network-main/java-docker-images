@@ -14,7 +14,7 @@ ENV LANG='en_US.UTF-8' LANGUAGE='en_US:UTF-8' LC_ALL='en_US.UTF-8'
 ENV DEBIAN_FRONTEND=noninteractive
 
 RUN apk update --no-cache \
-  && apk add curl ca-certificates openssl git tar sqlite fontconfig tzdata iproute2
+  && apk bash add curl ca-certificates openssl git tar sqlite fontconfig tzdata iproute2
 
 
 RUN adduser -D -h /home/container container
@@ -22,5 +22,5 @@ USER        container
 ENV         USER=container HOME=/home/container
 WORKDIR     /home/container
 
-COPY        ./ash/entrypoint.sh /entrypoint.sh
-CMD         ["/bin/sh", "/entrypoint.sh"]
+COPY        ./../entrypoint.sh /entrypoint.sh
+CMD         ["/bin/bash", "/entrypoint.sh"]
