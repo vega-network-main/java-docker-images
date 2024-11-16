@@ -3,7 +3,7 @@
 # Environment: Java
 # Minimum Panel Version: 1.7.0
 # ----------------------------------
-FROM --platform=$TARGETOS/$TARGETARCH openjdk:21-jdk-bullseye
+FROM --platform=$TARGETOS/$TARGETARCH openjdk:21-jdk-slim-bullseye
 
 LABEL authors="vovamod <veganetworkmain@gmail.com>,en0tuk <kolobokovich123@gmail.com>"
 
@@ -14,7 +14,7 @@ ENV LANG='en_US.UTF-8' LANGUAGE='en_US:en' LC_ALL='en_US.UTF-8'
 ENV DEBIAN_FRONTEND=noninteractive
 
 RUN apt-get update -y \
-  && apt-get install -y curl ca-certificates openssl git tar sqlite3 fontconfig tzdata locales iproute2
+    && apt-get install -y curl ca-certificates openssl git tar sqlite3 fontconfig tzdata locales iproute2
 
 
 RUN useradd -d /home/container -m container

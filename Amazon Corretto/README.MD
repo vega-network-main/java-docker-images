@@ -19,6 +19,9 @@
 ### [Java 21 | Version: 21+35-LTS](https://github.com/vega-network-main/java-docker-images/tree/main/Amazon%20Corretto/21)
 > ghcr.io/vega-network-main/amazon-corretto:21
 
+### [Java 23 | Version: 23 Experimental](https://github.com/vega-network-main/java-docker-images/tree/main/Amazon%20Corretto/23)
+> ghcr.io/vega-network-main/amazon-corretto:23
+
 ## Alpine Linux
 
 ### [Java 8 | Version: 8.392.08.1](https://github.com/vega-network-main/java-docker-images/tree/main/Amazon%20Corretto/8-alpine)
@@ -35,3 +38,6 @@
 
 ### [Java 21 | Version: 21+35-LTS](https://github.com/vega-network-main/java-docker-images/tree/main/Amazon%20Corretto/21-alpine)
 > ghcr.io/vega-network-main/amazon-corretto:21-alpine
+
+### [Java 23 | Version: 23 Experimental](https://github.com/vega-network-main/java-docker-images/tree/main/Amazon%20Corretto/23-alpine)
+> ghcr.io/vega-network-main/amazon-corretto:23-alpine

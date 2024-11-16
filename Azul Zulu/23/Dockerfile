@@ -3,7 +3,7 @@
 # Environment: Java
 # Minimum Panel Version: 1.7.0
 # ----------------------------------
-    FROM --platform=$TARGETOS/$TARGETARCH amazoncorretto:23
+    FROM --platform=$TARGETOS/$TARGETARCH azul/zulu-openjdk:23
 
     LABEL authors="vovamod <veganetworkmain@gmail.com>,en0tuk <kolobokovich123@gmail.com>"
     
@@ -13,8 +13,8 @@
     ENV LANG='en_US.UTF-8' LANGUAGE='en_US:en' LC_ALL='en_US.UTF-8'
     ENV DEBIAN_FRONTEND=noninteractive
     
-    RUN yum update -y \
-      && yum install -y curl ca-certificates openssl git tar sqlite3 fontconfig tzdata locales iproute
+    RUN apt-get update -y \
+      && apt-get install -y curl ca-certificates openssl git tar sqlite3 fontconfig tzdata locales iproute2
     
     
     RUN useradd -d /home/container -m container

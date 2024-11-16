@@ -3,7 +3,7 @@
 # Environment: Java
 # Minimum Panel Version: 1.7.0
 # ----------------------------------
-FROM --platform=$TARGETOS/$TARGETARCH openjdk:11.0.16-jdk-bullseye
+FROM --platform=$TARGETOS/$TARGETARCH openjdk:11-jdk-slim-bullseye
 
 LABEL authors="vovamod <veganetworkmain@gmail.com>,en0tuk <kolobokovich123@gmail.com>"
 

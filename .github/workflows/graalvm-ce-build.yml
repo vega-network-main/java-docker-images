@@ -9,7 +9,7 @@ permissions:
   packages: write
 
 jobs:
-  java-docker-images:
+  build:
     name: "java-docker-images:graalvm_${{ matrix.tag }}"
     runs-on: ubuntu-latest
     strategy:
@@ -19,6 +19,7 @@ jobs:
           - 17
           - 19
           - 21
+          - 23
     steps:
       - name: Checkout
         uses: actions/checkout@v3

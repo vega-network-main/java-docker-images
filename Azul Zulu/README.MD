@@ -11,5 +11,8 @@
 ### [Java 17 | Version: 17.0.9](https://github.com/vega-network-main/java-docker-images/tree/main/Azul%20Zulu/17)
 > ghcr.io/vega-network-main/azul-zulu:17
 
-### [Java 21 | Version: 21.0.1](https://github.com/vega-network-main/java-docker-images/tree/main/Azul%20Zulu/21)
+### [Java 21 | Version: last](https://github.com/vega-network-main/java-docker-images/tree/main/Azul%20Zulu/21)
 > ghcr.io/vega-network-main/azul-zulu:21
+
+### [Java 23 | Version: Experimental/Last](https://github.com/vega-network-main/java-docker-images/tree/main/Azul%20Zulu/23)
+> ghcr.io/vega-network-main/azul-zulu:23
