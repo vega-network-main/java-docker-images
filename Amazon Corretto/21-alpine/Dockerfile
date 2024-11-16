@@ -3,7 +3,7 @@
 # Environment: Java
 # Minimum Panel Version: 1.7.0
 # ----------------------------------
-FROM --platform=$TARGETOS/$TARGETARCH amazoncorretto:21.0.1-alpine
+FROM --platform=$TARGETOS/$TARGETARCH amazoncorretto:21-alpine
 
 LABEL authors="vovamod <veganetworkmain@gmail.com>,en0tuk <kolobokovich123@gmail.com>"
 
