@@ -13,7 +13,7 @@ ENV GITHUB_USER ${GITHUB_USER}
 ENV DEBIAN_FRONTEND=noninteractive
 
 RUN yum update -y \
-    && yum install -y curl ca-certificates openssl git tar sqlite fontconfig tzdata iproute \
+    && yum install -y --allowerasing curl ca-certificates openssl git tar sqlite fontconfig tzdata iproute \
     && yum install -y glibc-locale-source glibc-langpack-en
 
 
