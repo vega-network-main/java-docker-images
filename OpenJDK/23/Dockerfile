@@ -3,7 +3,7 @@
 # Environment: Java
 # Minimum Panel Version: 1.7.0
 # ----------------------------------
-FROM --platform=$TARGETOS/$TARGETARCH openjdk:23-ea-33-bookworm
+FROM --platform=$TARGETOS/$TARGETARCH openjdk:23-jdk-bookworm
 
 LABEL authors="vovamod <veganetworkmain@gmail.com>,en0tuk <kolobokovich123@gmail.com>"
 
