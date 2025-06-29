@@ -3,8 +3,10 @@
 # Environment: Java
 # Minimum Panel Version: 1.7.0
 # ----------------------------------
-# GH Worker does not support non-ARM images? docker.io/library/eclipse-temurin:8-jdk-alpine
-FROM --platform=$TARGETOS/$TARGETARCH eclipse-temurin:8-jdk
+# DEBUG
+RUN echo "Building on $(uname -m)"
+
+FROM --platform=$TARGETOS/$TARGETARCH eclipse-temurin:8-jdk-alpine
 
 LABEL authors="vovamod <veganetworkmain@gmail.com>, en0tuk <kolobokovich123@gmail.com>"
 
@@ -18,23 +20,22 @@ ENV LC_ALL 'en_US.UTF-8'
 ENV TZ UTC
 
 # Install required tools with no cache (we want to save space)
-RUN apt-get update && \
-    apt-get install -y --no-install-recommends \
-        bash \
-        curl \
-        ca-certificates \
-        git \
-        openssl \
-        tar \
-        sqlite3 \
-        fontconfig \
-        tzdata \
-        iproute2 \
-        shadow && \
-    apt-get clean && \
-    rm -rf /var/lib/apt/lists/*
+RUN apk add --no-cache \
+    bash \
+    curl \
+    ca-certificates \
+    git \
+    openssl \
+    tar \
+    sqlite \
+    fontconfig \
+    tzdata \
+    iproute2 \
+    shadow
+
 
 RUN useradd -m -d /home/container container
+
 USER container
 ENV USER=container HOME=/home/container
 WORKDIR /home/container

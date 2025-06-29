@@ -2,7 +2,7 @@ name: adoptium-build
 
 on:
   workflow_dispatch:
-  push:
+  #push:
 
 permissions:
   contents: write

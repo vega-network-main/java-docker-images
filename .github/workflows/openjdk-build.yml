@@ -2,7 +2,7 @@ name: openjdk-build
 
 on:
   workflow_dispatch:
-  push:
+  #push:
 
 permissions:
   contents: write
@@ -13,7 +13,7 @@ permissions:
 jobs:
   build:
     name: "java-docker-images:openjdk_${{ matrix.tag }}"
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     strategy:
       matrix:
         tag:
@@ -57,7 +57,7 @@ jobs:
         with:
           context: .
           file: ./OpenJDK/${{ matrix.tag }}/Dockerfile
-          platforms: linux/amd64,linux/arm64
+          platforms: linux/amd64
           push: ${{ github.event_name != 'pull_request' }}
           tags: ${{ steps.meta_openjdk.outputs.tags }}
           labels: ${{ steps.meta_openjdk.outputs.labels }}
@@ -66,7 +66,7 @@ jobs:
 
   build-jre:
     name: "java-docker-images:openjdk_${{ matrix.tag }}"
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     strategy:
       matrix:
         tag:

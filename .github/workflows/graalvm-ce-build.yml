@@ -2,7 +2,7 @@ name: graalvm-ce-build
 
 on:
   workflow_dispatch:
-  push:
+  #push:
 
 permissions:
   contents: write
