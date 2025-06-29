@@ -1,6 +1,8 @@
 name: openjdk-build
 
-on: workflow_dispatch
+on:
+  workflow_dispatch:
+  push:
 
 permissions:
   contents: write
@@ -15,6 +17,7 @@ jobs:
     strategy:
       matrix:
         tag:
+          - 8
           - 11
           - 17
           - 19
@@ -61,14 +64,19 @@ jobs:
           build-args: |
             "GITHUB_USER=${{ github.repository_owner }}"
 
-  build-alpine:
+  build-jre:
     name: "java-docker-images:openjdk_${{ matrix.tag }}"
     runs-on: ubuntu-latest
     strategy:
       matrix:
         tag:
-          - 17-alpine
-          - 19-alpine
+          - 8-jre
+          - 11-jre
+          - 17-jre
+          - 19-jre
+          - 21-jre
+          - 23-jre
+          - 24-jre
     steps:
       - name: Checkout
         uses: actions/checkout@v3
