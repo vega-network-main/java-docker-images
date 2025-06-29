@@ -1,8 +1,8 @@
 # OpenJDK Docker Container Configuration
 
 Based on Eclipse Temurin
-
-## Variants
+### WARNING!
+Some of the images run only on amd64 and does not support arm64 (JDK: 8, 11, 17)
 
 ## Default (JDK)
 

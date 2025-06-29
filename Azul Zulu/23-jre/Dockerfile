@@ -3,7 +3,7 @@
 # Environment: Java
 # Minimum Panel Version: 1.7.0
 # ----------------------------------
-FROM --platform=$TARGETOS/$TARGETARCH amazoncorretto:19-alpine-jdk
+FROM --platform=$TARGETOS/$TARGETARCH azul/zulu-openjdk-alpine:23-jre-headless
 
 LABEL authors="vovamod <veganetworkmain@gmail.com>, en0tuk <kolobokovich123@gmail.com>"
 
