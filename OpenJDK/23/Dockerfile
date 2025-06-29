@@ -28,8 +28,7 @@ RUN apk add --no-cache \
     fontconfig \
     tzdata \
     iproute2 \
-    shadow \
-    libudev1 # For PaperMC
+    shadow
 
 
 RUN useradd -m -d /home/container container
