@@ -3,8 +3,6 @@
 # Environment: Java
 # Minimum Panel Version: 1.7.0
 # ----------------------------------
-# DEBUG
-RUN echo "Building on $(uname -m)"
 
 FROM --platform=$TARGETOS/$TARGETARCH eclipse-temurin:8-jdk-alpine
 
