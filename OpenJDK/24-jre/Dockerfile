@@ -25,14 +25,16 @@ RUN apk add --no-cache \
     openssl \
     tar \
     sqlite \
-    fontconfig \
     tzdata \
     iproute2 \
     shadow \
+    libstdc++ \
     fontconfig \
     font-dejavu \
-    ttf-freefont
-
+    font-terminus \
+    msttcorefonts-installer && \
+    update-ms-fonts && \
+    fc-cache -f
 
 RUN useradd -m -d /home/container container
 
