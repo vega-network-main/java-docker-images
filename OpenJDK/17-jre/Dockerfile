@@ -30,7 +30,8 @@ RUN apk add --no-cache \
     iproute2 \
     shadow \
     fontconfig \
-    font-dejavu
+    font-dejavu \
+    ttf-freefont
 
 
 RUN useradd -m -d /home/container container

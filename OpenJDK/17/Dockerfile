@@ -31,7 +31,8 @@ RUN apk add --no-cache \
     shadow \
     libstdc++ \
     fontconfig \
-    font-dejavu
+    font-dejavu \
+    ttf-freefont
 
 
 RUN useradd -m -d /home/container container
