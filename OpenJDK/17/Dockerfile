@@ -28,7 +28,10 @@ RUN apk add --no-cache \
     fontconfig \
     tzdata \
     iproute2 \
-    shadow
+    shadow \
+    libstdc++ \
+    fontconfig \
+    font-dejavu
 
 
 RUN useradd -m -d /home/container container
