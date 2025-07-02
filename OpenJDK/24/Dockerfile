@@ -36,6 +36,10 @@ RUN apk add --no-cache \
     update-ms-fonts && \
     fc-cache -f
 
+# Fix JAVA: java.lang.RuntimeException: java.awt.FontFormatException: bad pfa font
+RUN find /usr/share/fonts -type f \
+    \( -iname "*.pfa" -o -iname "*.pfb" -o -iname "*.pcf" -o -iname "*.otb" \) -delete && \
+    fc-cache -f
 
 RUN useradd -m -d /home/container container
 
