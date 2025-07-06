@@ -32,9 +32,8 @@ RUN apk add --no-cache \
     fontconfig \
     font-dejavu \
     font-terminus \
-    msttcorefonts-installer && \
-    update-ms-fonts && \
-    fc-cache -f
+    font-noto \
+    font-awesome
 
 RUN useradd -m -d /home/container container
 

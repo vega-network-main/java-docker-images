@@ -32,14 +32,8 @@ RUN apk add --no-cache \
     fontconfig \
     font-dejavu \
     font-terminus \
-    msttcorefonts-installer && \
-    update-ms-fonts && \
-    fc-cache -f
-
-# Fix JAVA: java.lang.RuntimeException: java.awt.FontFormatException: bad pfa font
-RUN find /usr/share/fonts -type f \
-    \( -iname "*.pfa" -o -iname "*.pfb" -o -iname "*.pcf" -o -iname "*.otb" \) -delete && \
-    fc-cache -f
+    font-noto \
+    font-awesome
 
 RUN useradd -m -d /home/container container
 
