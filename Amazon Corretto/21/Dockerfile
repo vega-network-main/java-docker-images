@@ -30,6 +30,7 @@ RUN apk add --no-cache \
     shadow \
     libstdc++ \
     liburing \
+    eudev-libs \
     fontconfig \
     font-dejavu \
     font-terminus \
