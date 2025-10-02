@@ -29,6 +29,7 @@ RUN apk add --no-cache \
     iproute2 \
     shadow \
     libstdc++ \
+    liburing \
     fontconfig \
     font-dejavu \
     font-terminus \
