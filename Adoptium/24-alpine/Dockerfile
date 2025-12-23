@@ -3,9 +3,9 @@
 # Environment: Java
 # Minimum Panel Version: 1.7.0
 # ----------------------------------
-FROM --platform=$TARGETOS/$TARGETARCH azul/zulu-openjdk-alpine:21-jre-headless
+FROM --platform=$TARGETOS/$TARGETARCH eclipse-temurin:24-jdk-alpine
 
-LABEL authors="vovamod <veganetworkmain@gmail.com>, en0tuk <kolobokovich123@gmail.com>"
+LABEL authors="vovamod <veganetworkmain@gmail.com>"
 
 ARG GITHUB_USER
 
@@ -16,7 +16,6 @@ ENV LANGUAGE='en_US:en'
 ENV LC_ALL='en_US.UTF-8'
 ENV TZ='UTC'
 
-# Install required tools with no cache (we want to save space)
 RUN apk add --no-cache \
     bash \
     curl \

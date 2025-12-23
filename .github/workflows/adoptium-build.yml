@@ -2,7 +2,11 @@ name: adoptium-build
 
 on:
   workflow_dispatch:
-  #push:
+  pull_request:
+    branches:
+      - main
+    types:
+      - closed
 
 permissions:
   contents: write
@@ -22,6 +26,8 @@ jobs:
           - 17
           - 19
           - 21
+          - 24
+          - 25
     steps:
       - name: Checkout
         uses: actions/checkout@v3
@@ -73,6 +79,8 @@ jobs:
           - 17-alpine
           - 19-alpine
           - 21-alpine
+          - 24-alpine
+          - 25-alpine
     steps:
       - name: Checkout
         uses: actions/checkout@v3

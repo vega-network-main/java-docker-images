@@ -3,9 +3,9 @@
 # Environment: Java
 # Minimum Panel Version: 1.7.0
 # ----------------------------------
-FROM --platform=$TARGETOS/$TARGETARCH azul/zulu-openjdk-alpine:21-jre-headless
+FROM --platform=$TARGETOS/$TARGETARCH azul/zulu-openjdk-alpine:25
 
-LABEL authors="vovamod <veganetworkmain@gmail.com>, en0tuk <kolobokovich123@gmail.com>"
+LABEL authors="vovamod <veganetworkmain@gmail.com>"
 
 ARG GITHUB_USER
 
