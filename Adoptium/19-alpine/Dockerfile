@@ -30,7 +30,6 @@ RUN apk add --no-cache \
     libstdc++ \
     fontconfig \
     font-dejavu \
-    font-terminus \
     font-noto \
     font-awesome && useradd -m -d /home/container container
 
