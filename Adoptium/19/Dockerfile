@@ -30,6 +30,7 @@ RUN apt-get update && apt-get install --no-install-recommends -y \
     iproute2 \
     fontconfig \
     fonts-dejavu \
+    fonts-terminus \
     fonts-noto \
     fonts-font-awesome \
     && rm -rf /var/lib/apt/lists/* \
