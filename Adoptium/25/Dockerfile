@@ -3,7 +3,7 @@
 # Environment: Java
 # Minimum Panel Version: 1.7.0
 # ----------------------------------
-FROM --platform=$TARGETOS/$TARGETARCH eclipse-temurin:25-jdk-jammy
+FROM --platform=$TARGETOS/$TARGETARCH eclipse-temurin:25-jdk-noble
 
 LABEL authors="vovamod <veganetworkmain@gmail.com>"
 
