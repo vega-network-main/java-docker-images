@@ -24,7 +24,7 @@ Each vendor has its own folder:
 * `/Amazon Corretto` - [README](https://github.com/vega-network-main/java-docker-images/blob/main/Amazon%20Corretto/README.MD)
 * `/Azul Zulu`       - [README](https://github.com/vega-network-main/java-docker-images/blob/main/Azul%20Zulu/README.MD)
 * `/GraalVM`         - [README](https://github.com/vega-network-main/java-docker-images/blob/main/GraalVM/README.MD)
-* `/OpenJDK`         - [README](https://github.com/vega-network-main/java-docker-images/blob/main/OpenJDK/README.MD)
+* `/OpenJDK`         - [README](https://github.com/vega-network-main/java-docker-images/blob/main/OpenJDK/README.MD) (DEPRECATED - We will not update this image anymore files of it were removed but GHCR images are still available)
 
 Inside each:
 
@@ -45,6 +45,7 @@ Inside each:
 
 ```dockerfile
 FROM ghcr.io/vega-network-main/java-docker-images:openjdk-17-jre-alpine
+USER container # not always needed
 COPY my-app.jar /app.jar
 CMD ["java", "-jar", "/app.jar"]
 ```

@@ -3,37 +3,38 @@
 # Environment: Java
 # Minimum Panel Version: 1.7.0
 # ----------------------------------
-FROM --platform=$TARGETOS/$TARGETARCH azul/zulu-openjdk-alpine:21-jre-headless
+FROM --platform=$TARGETOS/$TARGETARCH eclipse-temurin:25-jdk-jammy
 
-LABEL authors="vovamod <veganetworkmain@gmail.com>, en0tuk <kolobokovich123@gmail.com>"
+LABEL authors="vovamod <veganetworkmain@gmail.com>"
 
 ARG GITHUB_USER
 
-# Fix Docker ENV values
 ENV GITHUB_USER=${GITHUB_USER}
 ENV LANG='en_US.UTF-8'
 ENV LANGUAGE='en_US:en'
 ENV LC_ALL='en_US.UTF-8'
 ENV TZ='UTC'
+# debian_fix
+ENV DEBIAN_FRONTEND=noninteractive
 
-# Install required tools with no cache (we want to save space)
-RUN apk add --no-cache \
+RUN apt-get update && apt-get install --no-install-recommends -y \
     bash \
     curl \
     ca-certificates \
     git \
     openssl \
     tar \
-    sqlite \
+    sqlite3 \
     tzdata \
+    locales \
     iproute2 \
-    shadow \
-    libstdc++ \
     fontconfig \
-    font-dejavu \
-    font-terminus \
-    font-noto \
-    font-awesome && useradd -m -d /home/container container
+    fonts-dejavu \
+    fonts-terminus \
+    fonts-noto \
+    fonts-font-awesome \
+    && rm -rf /var/lib/apt/lists/* \
+    && useradd -d /home/container -m container
 
 USER container
 ENV USER=container HOME=/home/container

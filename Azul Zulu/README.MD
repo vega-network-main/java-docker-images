@@ -20,6 +20,9 @@
 ### [Java 24](https://github.com/vega-network-main/java-docker-images/tree/main/Azul%20Zulu/24)
 > ghcr.io/vega-network-main/azul-zulu:24
 
+### [Java 25](https://github.com/vega-network-main/java-docker-images/tree/main/Azul%20Zulu/25)
+> ghcr.io/vega-network-main/azul-zulu:25
+
 ## JRE (Headless)
 
 ### [Java 8](https://github.com/vega-network-main/java-docker-images/tree/main/Azul%20Zulu/8-jre)
@@ -39,3 +42,6 @@
 
 ### [Java 24](https://github.com/vega-network-main/java-docker-images/tree/main/Azul%20Zulu/24-jre)
 > ghcr.io/vega-network-main/azul-zulu:24-jre
+
+### [Java 25](https://github.com/vega-network-main/java-docker-images/tree/main/Azul%20Zulu/25-jre)
+> ghcr.io/vega-network-main/azul-zulu:25-jre
