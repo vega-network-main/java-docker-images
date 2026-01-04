@@ -33,6 +33,7 @@ RUN apk add --no-cache \
     font-dejavu \
     font-terminus \
     font-noto \
+    numactl-libs \
     font-awesome && useradd -m -d /home/container container
 
 USER container
