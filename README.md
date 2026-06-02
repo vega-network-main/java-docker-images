@@ -6,6 +6,8 @@ Lightweight, multivendor Java Docker images tailored for: [Pterodactyl](https://
 From **June 29, 2025**, we’re migrating all images to **Alpine Linux** where possible.
 Currently migrating: GraalVM and Adoptium
 
+Liberica uses [Alpaquita linux](https://bell-sw.com/alpaquita-linux/)
+
 ---
 
 ## 🛠️ Features
@@ -24,12 +26,19 @@ Each vendor has its own folder:
 * `/Amazon Corretto` - [README](https://github.com/vega-network-main/java-docker-images/blob/main/Amazon%20Corretto/README.MD)
 * `/Azul Zulu`       - [README](https://github.com/vega-network-main/java-docker-images/blob/main/Azul%20Zulu/README.MD)
 * `/GraalVM`         - [README](https://github.com/vega-network-main/java-docker-images/blob/main/GraalVM/README.MD)
+* `/Liberica`        - [README](https://github.com/vega-network-main/java-docker-images/blob/main/Liberica/README.MD)
 * `/OpenJDK`         - [README](https://github.com/vega-network-main/java-docker-images/blob/main/OpenJDK/README.MD) (DEPRECATED - We will not update this image anymore files of it were removed but GHCR images are still available)
 
 Inside each:
 
 ```shell
 /java-version[-jre]/Dockerfile
+```
+
+Liberica uses universal:
+
+```shell
+/Dockerfile
 ```
 
 ---
