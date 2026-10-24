@@ -1,3 +1,9 @@
-# None. Just exist here
-
+# env file
 .env
+*/.env
+
+# IDE
+/.idea/
+
+# OS
+.DS_Store
