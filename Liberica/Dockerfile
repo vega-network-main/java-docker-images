@@ -18,6 +18,7 @@ ENV LANG='en_US.UTF-8'
 ENV LANGUAGE='en_US:en'
 ENV LC_ALL='en_US.UTF-8'
 ENV TZ='UTC'
+ARG LIBC_TYPE
 
 RUN apk add --no-cache \
     bash \
@@ -34,7 +35,8 @@ RUN apk add --no-cache \
     fontconfig \
     font-dejavu \
     font-terminus \
-    && useradd -m -d /home/container container
+    && useradd -m -d /home/container container \
+    && if [ "${LIBC_TYPE}" = "glibc" ]; then sed -i '/^ID_LIKE=/d' "$(readlink -f /etc/os-release)"; fi
 
 USER container
 ENV USER=container HOME=/home/container
