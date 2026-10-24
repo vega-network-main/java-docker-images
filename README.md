@@ -4,7 +4,7 @@
 Lightweight, multivendor Java Docker images tailored for: [Pterodactyl](https://pterodactyl.io/), [Pelican](https://pelican.dev/) panels.
 
 From **June 29, 2025**, we’re migrating all images to **Alpine Linux** where possible.
-Currently migrating: GraalVM and Adoptium
+Adoptium ships both Ubuntu/Debian and `-alpine` tags. GraalVM is an exception with no musl builds.
 
 Liberica uses [Alpaquita linux](https://bell-sw.com/alpaquita-linux/)
 

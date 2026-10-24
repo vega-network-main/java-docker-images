@@ -4,7 +4,7 @@
 
 ## Default
 
-### [Java 11 | Version: 11.0.21+9-LTS](https://github.com/vega-network-main/java-docker-images/tree/main/Adoptium/11)
+### [Java 8](https://github.com/vega-network-main/java-docker-images/tree/main/Adoptium/8)
 > ghcr.io/vega-network-main/adoptium:8
 
 ### [Java 11 | Version: 11.0.21+9-LTS](https://github.com/vega-network-main/java-docker-images/tree/main/Adoptium/11)
@@ -19,7 +19,7 @@
 ### [Java 21 | Version: 21-LTS](https://github.com/vega-network-main/java-docker-images/tree/main/Adoptium/21)
 > ghcr.io/vega-network-main/adoptium:21
 
-### [Java 24 | Version: 24-LTS](https://github.com/vega-network-main/java-docker-images/tree/main/Adoptium/24)
+### [Java 24 | Version: 24](https://github.com/vega-network-main/java-docker-images/tree/main/Adoptium/24)
 > ghcr.io/vega-network-main/adoptium:24
 
 ### [Java 25 | Version: 25-LTS](https://github.com/vega-network-main/java-docker-images/tree/main/Adoptium/25)
@@ -27,7 +27,7 @@
 
 ## Alpine
 
-### [Java 11 | Version: 11.0.21+9-LTS](https://github.com/vega-network-main/java-docker-images/tree/main/Adoptium/11-alpine)
+### [Java 8](https://github.com/vega-network-main/java-docker-images/tree/main/Adoptium/8-alpine)
 > ghcr.io/vega-network-main/adoptium:8-alpine
 
 ### [Java 11 | Version: 11.0.21+9-LTS](https://github.com/vega-network-main/java-docker-images/tree/main/Adoptium/11-alpine)
@@ -42,7 +42,7 @@
 ### [Java 21 | Version: 21-LTS](https://github.com/vega-network-main/java-docker-images/tree/main/Adoptium/21-alpine)
 > ghcr.io/vega-network-main/adoptium:21-alpine
 
-### [Java 24 | Version: 24-LTS](https://github.com/vega-network-main/java-docker-images/tree/main/Adoptium/24-alpine)
+### [Java 24 | Version: 24](https://github.com/vega-network-main/java-docker-images/tree/main/Adoptium/24-alpine)
 > ghcr.io/vega-network-main/adoptium:24-alpine
 
 ### [Java 25 | Version: 25-LTS](https://github.com/vega-network-main/java-docker-images/tree/main/Adoptium/25-alpine)
