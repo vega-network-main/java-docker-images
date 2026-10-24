@@ -29,7 +29,7 @@ RUN apt-get update \
     locales \
     iproute2 \
     fontconfig \
-    fonts-dejavu \
+    fonts-dejavu-core \
     fonts-terminus \
     fonts-noto \
     fonts-font-awesome \

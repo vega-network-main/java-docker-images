@@ -6,19 +6,22 @@
 FROM --platform=$BUILDPLATFORM debian:13-slim AS graalvm
 
 ARG TARGETARCH
-ARG GRAAL_VERSION=21.0.2
+ARG GRAAL_URL_AMD64=https://github.com/graalvm/graalvm-ce-builds/releases/download/jdk-21.0.2/graalvm-community-jdk-21.0.2_linux-x64_bin.tar.gz
+ARG GRAAL_SHA256_AMD64=b048069aaa3a99b84f5b957b162cc181a32a4330cbc35402766363c5be76ae48
+ARG GRAAL_URL_ARM64=https://github.com/graalvm/graalvm-ce-builds/releases/download/jdk-21.0.2/graalvm-community-jdk-21.0.2_linux-aarch64_bin.tar.gz
+ARG GRAAL_SHA256_ARM64=a34be691ce68f0acf4655c7c6c63a9a49ed276a11859d7224fd94fc2f657cd7a
 
 RUN apt-get update \
     && apt-get install -y --no-install-recommends curl ca-certificates \
     && case "${TARGETARCH}" in \
-        amd64) ARCH=x64 ;; \
-        arm64) ARCH=aarch64 ;; \
+        amd64) URL="${GRAAL_URL_AMD64}"; SHA256="${GRAAL_SHA256_AMD64}" ;; \
+        arm64) URL="${GRAAL_URL_ARM64}"; SHA256="${GRAAL_SHA256_ARM64}" ;; \
         *) echo "unsupported arch: ${TARGETARCH}" >&2; exit 1 ;; \
     esac \
+    && curl -fsSL --retry 3 -o /tmp/graalvm.tar.gz "${URL}" \
+    && echo "${SHA256}  /tmp/graalvm.tar.gz" | sha256sum -c - \
     && mkdir -p /opt/java/graalvm \
-    && curl -fsSL --retry 3 \
-        "https://github.com/graalvm/graalvm-ce-builds/releases/download/jdk-${GRAAL_VERSION}/graalvm-community-jdk-${GRAAL_VERSION}_linux-${ARCH}_bin.tar.gz" \
-        | tar -xz -C /opt/java/graalvm --strip-components=1
+    && tar -xzf /tmp/graalvm.tar.gz -C /opt/java/graalvm --strip-components=1
 
 FROM debian:13-slim
 
@@ -48,7 +51,7 @@ RUN apt-get update \
     locales \
     iproute2 \
     fontconfig \
-    fonts-dejavu \
+    fonts-dejavu-core \
     fonts-terminus \
     fonts-noto \
     fonts-font-awesome \

@@ -34,7 +34,7 @@ RUN apt-get update \
     unzip \
     ncurses-term \
     fontconfig \
-    fonts-dejavu \
+    fonts-dejavu-core \
     fonts-terminus \
     fonts-noto \
     fonts-font-awesome \
