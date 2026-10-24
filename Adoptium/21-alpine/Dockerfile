@@ -3,13 +3,12 @@
 # Environment: Java
 # Minimum Panel Version: 1.7.0
 # ----------------------------------
-FROM --platform=$TARGETOS/$TARGETARCH eclipse-temurin:21-jdk-alpine
+FROM eclipse-temurin:21-jdk-alpine
 
-LABEL authors="vovamod <veganetworkmain@gmail.com>,en0tuk <kolobokovich123@gmail.com>"
+LABEL authors="vovamod <veganetworkmain@gmail.com>, en0tuk <kolobokovich123@gmail.com>"
 
 ARG GITHUB_USER
 
-# Fix Docker ENV values
 ENV GITHUB_USER=${GITHUB_USER}
 ENV LANG='en_US.UTF-8'
 ENV LANGUAGE='en_US:en'
@@ -32,12 +31,13 @@ RUN apk add --no-cache \
     font-dejavu \
     font-terminus \
     font-noto \
-    font-awesome && useradd -m -d /home/container container
+    font-awesome \
+    && useradd -m -d /home/container container
 
 USER container
 ENV USER=container HOME=/home/container
 WORKDIR /home/container
 
-COPY ./../entrypoint.sh /entrypoint.sh
+COPY entrypoint.sh /entrypoint.sh
 
 CMD ["/bin/bash", "/entrypoint.sh"]

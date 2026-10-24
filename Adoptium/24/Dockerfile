@@ -3,7 +3,7 @@
 # Environment: Java
 # Minimum Panel Version: 1.7.0
 # ----------------------------------
-FROM --platform=$TARGETOS/$TARGETARCH eclipse-temurin:24-jdk-noble
+FROM eclipse-temurin:24-jdk-noble
 
 LABEL authors="vovamod <veganetworkmain@gmail.com>"
 
@@ -14,10 +14,10 @@ ENV LANG='en_US.UTF-8'
 ENV LANGUAGE='en_US:en'
 ENV LC_ALL='en_US.UTF-8'
 ENV TZ='UTC'
-# debian_fix
-ENV DEBIAN_FRONTEND=noninteractive
+ARG DEBIAN_FRONTEND=noninteractive
 
-RUN apt-get update && apt-get install --no-install-recommends -y \
+RUN apt-get update \
+    && apt-get install -y --no-install-recommends \
     bash \
     curl \
     ca-certificates \
@@ -34,12 +34,12 @@ RUN apt-get update && apt-get install --no-install-recommends -y \
     fonts-noto \
     fonts-font-awesome \
     && rm -rf /var/lib/apt/lists/* \
-    && useradd -d /home/container -m container
+    && useradd -m -d /home/container container
 
 USER container
 ENV USER=container HOME=/home/container
 WORKDIR /home/container
 
-COPY ./../entrypoint.sh /entrypoint.sh
+COPY entrypoint.sh /entrypoint.sh
 
 CMD ["/bin/bash", "/entrypoint.sh"]
