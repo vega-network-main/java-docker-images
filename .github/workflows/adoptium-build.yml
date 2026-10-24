@@ -6,117 +6,150 @@ on:
     branches:
       - main
     types:
+      - opened
+      - synchronize
+      - reopened
       - closed
 
 permissions:
-  contents: write
-  pull-requests: write 
-  issues: read
+  contents: read
   packages: write
 
 jobs:
   build:
-    name: "java-docker-images:adoptium_${{ matrix.tag }}"
+    name: "adoptium:${{ matrix.tag }}"
+    if: github.event.action != 'closed' || github.event.pull_request.merged
     runs-on: ubuntu-latest
+    env:
+      PUBLISH: ${{ github.event_name == 'workflow_dispatch' || github.event.pull_request.merged == true }}
     strategy:
+      fail-fast: false
       matrix:
         tag:
-          - 8
-          - 11
-          - 17
-          - 19
-          - 21
-          - 24
-          - 25
+          - "8"
+          - "11"
+          - "17"
+          - "19"
+          - "21"
+          - "24"
+          - "25"
+          - "27"
+          - "21-alpine"
+          - "24-alpine"
+          - "25-alpine"
+          - "27-alpine"
     steps:
       - name: Checkout
-        uses: actions/checkout@v3
-      
+        uses: actions/checkout@v7
+
       - name: Set up QEMU
-        uses: docker/setup-qemu-action@v2
-        
+        uses: docker/setup-qemu-action@v4
+
       - name: Set up Docker Buildx
-        id: buildx
-        uses: docker/setup-buildx-action@v2
+        uses: docker/setup-buildx-action@v4
 
-      - name: Login to GHCR
-        if: github.event_name != 'pull_request'
-        uses: docker/login-action@v2
-        with:
-          registry: ghcr.io
-          username: ${{ github.repository_owner }}
-          password: ${{ secrets.GITHUB_TOKEN }}
-
-      - name: Docker meta
-        id: meta_adoptium
-        uses: docker/metadata-action@v4
-        with:
-          images: |
-            ghcr.io/${{ github.repository_owner }}/adoptium
-          tags: |
-            ${{ matrix.tag }}
-            
-      - name: Build and push images
-        uses: docker/build-push-action@v3
-        with:
-          context: .
-          file: ./Adoptium/${{ matrix.tag }}/Dockerfile
-          platforms: linux/amd64,linux/arm64
-          push: ${{ github.event_name != 'pull_request' }}
-          tags: ${{ steps.meta_adoptium.outputs.tags }}
-          labels: ${{ steps.meta_adoptium.outputs.labels }}
-          build-args: |
-            "GITHUB_USER=${{ github.repository_owner }}"
-
-  build-alpine:
-    name: "java-docker-images:adoptium_${{ matrix.tag }}"
-    runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        tag:
-          - 8-alpine
-          - 11-alpine
-          - 17-alpine
-          - 19-alpine
-          - 21-alpine
-          - 24-alpine
-          - 25-alpine
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v3
-      
-      - name: Set up QEMU
-        uses: docker/setup-qemu-action@v2
-        
-      - name: Set up Docker Buildx
-        id: buildx
-        uses: docker/setup-buildx-action@v2
-
-      - name: Login to GHCR
-        if: github.event_name != 'pull_request'
-        uses: docker/login-action@v2
-        with:
-          registry: ghcr.io
-          username: ${{ github.repository_owner }}
-          password: ${{ secrets.GITHUB_TOKEN }}
-
-      - name: Docker meta
-        id: meta_adoptium
-        uses: docker/metadata-action@v4
-        with:
-          images: |
-            ghcr.io/${{ github.repository_owner }}/adoptium
-          tags: |
-            ${{ matrix.tag }}
-            
-      - name: Build and push images
-        uses: docker/build-push-action@v3
+      - name: Build test image
+        uses: docker/build-push-action@v7
         with:
           context: .
           file: ./Adoptium/${{ matrix.tag }}/Dockerfile
           platforms: linux/amd64
-          push: ${{ github.event_name != 'pull_request' }}
-          tags: ${{ steps.meta_adoptium.outputs.tags }}
-          labels: ${{ steps.meta_adoptium.outputs.labels }}
+          load: true
+          tags: smoke-test:latest
           build-args: |
-            "GITHUB_USER=${{ github.repository_owner }}"
+            GITHUB_USER=${{ github.repository_owner }}
+
+      - name: Smoke test
+        run: tests/smoke.sh smoke-test:latest
+
+      - name: Login to GHCR
+        if: env.PUBLISH == 'true'
+        uses: docker/login-action@v4
+        with:
+          registry: ghcr.io
+          username: ${{ github.repository_owner }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Docker meta
+        id: meta
+        uses: docker/metadata-action@v6
+        with:
+          images: ghcr.io/${{ github.repository_owner }}/adoptium
+          tags: ${{ matrix.tag }}
+
+      - name: Build and push images
+        uses: docker/build-push-action@v7
+        with:
+          context: .
+          file: ./Adoptium/${{ matrix.tag }}/Dockerfile
+          platforms: linux/amd64,linux/arm64
+          push: ${{ env.PUBLISH == 'true' }}
+          tags: ${{ steps.meta.outputs.tags }}
+          labels: ${{ steps.meta.outputs.labels }}
+          build-args: |
+            GITHUB_USER=${{ github.repository_owner }}
+
+  build-alpine-amd64:
+    name: "adoptium:${{ matrix.tag }}"
+    if: github.event.action != 'closed' || github.event.pull_request.merged
+    runs-on: ubuntu-latest
+    env:
+      PUBLISH: ${{ github.event_name == 'workflow_dispatch' || github.event.pull_request.merged == true }}
+    strategy:
+      fail-fast: false
+      matrix:
+        tag:
+          - "8-alpine"
+          - "11-alpine"
+          - "17-alpine"
+          - "19-alpine"
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v7
+
+      - name: Set up QEMU
+        uses: docker/setup-qemu-action@v4
+
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v4
+
+      - name: Build test image
+        uses: docker/build-push-action@v7
+        with:
+          context: .
+          file: ./Adoptium/${{ matrix.tag }}/Dockerfile
+          platforms: linux/amd64
+          load: true
+          tags: smoke-test:latest
+          build-args: |
+            GITHUB_USER=${{ github.repository_owner }}
+
+      - name: Smoke test
+        run: tests/smoke.sh smoke-test:latest
+
+      - name: Login to GHCR
+        if: env.PUBLISH == 'true'
+        uses: docker/login-action@v4
+        with:
+          registry: ghcr.io
+          username: ${{ github.repository_owner }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Docker meta
+        id: meta
+        uses: docker/metadata-action@v6
+        with:
+          images: ghcr.io/${{ github.repository_owner }}/adoptium
+          tags: ${{ matrix.tag }}
+
+      - name: Build and push images
+        uses: docker/build-push-action@v7
+        with:
+          context: .
+          file: ./Adoptium/${{ matrix.tag }}/Dockerfile
+          platforms: linux/amd64
+          push: ${{ env.PUBLISH == 'true' }}
+          tags: ${{ steps.meta.outputs.tags }}
+          labels: ${{ steps.meta.outputs.labels }}
+          build-args: |
+            GITHUB_USER=${{ github.repository_owner }}
