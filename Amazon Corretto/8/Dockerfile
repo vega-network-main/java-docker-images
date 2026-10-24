@@ -10,7 +10,7 @@ LABEL authors="vovamod <veganetworkmain@gmail.com>, en0tuk <kolobokovich123@gmai
 ARG GITHUB_USER
 
 # Fix Docker ENV values
-ENV GITHUB_USE=${GITHUB_USER}
+ENV GITHUB_USER=${GITHUB_USER}
 ENV LANG='en_US.UTF-8'
 ENV LANGUAGE='en_US:en'
 ENV LC_ALL='en_US.UTF-8'
