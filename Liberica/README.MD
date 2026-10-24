@@ -19,6 +19,9 @@
 ### [Java 25 | Version: 25-LTS](https://github.com/vega-network-main/java-docker-images/tree/main/Liberica)
 > ghcr.io/vega-network-main/liberica:jre-25-glibc
 
+### [Java 27 | Version: 27](https://github.com/vega-network-main/java-docker-images/tree/main/Liberica)
+> ghcr.io/vega-network-main/liberica:jre-27-glibc
+
 ## Standard JRE — musl
 
 ### [Java 8 | Version: 8-LTS](https://github.com/vega-network-main/java-docker-images/tree/main/Liberica)
@@ -35,6 +38,9 @@
 
 ### [Java 25 | Version: 25-LTS](https://github.com/vega-network-main/java-docker-images/tree/main/Liberica)
 > ghcr.io/vega-network-main/liberica:jre-25-musl
+
+### [Java 27 | Version: 27](https://github.com/vega-network-main/java-docker-images/tree/main/Liberica)
+> ghcr.io/vega-network-main/liberica:jre-27-musl
 
 ## Standard JDK — glibc
 
@@ -53,6 +59,9 @@
 ### [Java 25 | Version: 25-LTS](https://github.com/vega-network-main/java-docker-images/tree/main/Liberica)
 > ghcr.io/vega-network-main/liberica:jdk-25-glibc
 
+### [Java 27 | Version: 27](https://github.com/vega-network-main/java-docker-images/tree/main/Liberica)
+> ghcr.io/vega-network-main/liberica:jdk-27-glibc
+
 ## Standard JDK — musl
 
 ### [Java 8 | Version: 8-LTS](https://github.com/vega-network-main/java-docker-images/tree/main/Liberica)
@@ -69,3 +78,6 @@
 
 ### [Java 25 | Version: 25-LTS](https://github.com/vega-network-main/java-docker-images/tree/main/Liberica)
 > ghcr.io/vega-network-main/liberica:jdk-25-musl
+
+### [Java 27 | Version: 27](https://github.com/vega-network-main/java-docker-images/tree/main/Liberica)
+> ghcr.io/vega-network-main/liberica:jdk-27-musl

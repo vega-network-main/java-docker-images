@@ -24,3 +24,6 @@
 
 ### [Java 25](https://github.com/vega-network-main/java-docker-images/tree/main/Amazon%20Corretto/25)
 > ghcr.io/vega-network-main/amazon-corretto:25
+
+### [Java 27](https://github.com/vega-network-main/java-docker-images/tree/main/Amazon%20Corretto/27)
+> ghcr.io/vega-network-main/amazon-corretto:27

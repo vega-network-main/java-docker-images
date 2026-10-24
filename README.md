@@ -13,7 +13,8 @@ Liberica uses [Alpaquita linux](https://bell-sw.com/alpaquita-linux/)
 ## 🛠️ Features
 
 * JDK and JRE variants
-* Multi-version support (Java 8 → 24+)
+* Multi-version support (Java 8 → 27)
+* amd64 and arm64, except Adoptium `8-alpine` to `19-alpine` (amd64 only)
 * Compatible with containerized game and app hosting
 
 ---
