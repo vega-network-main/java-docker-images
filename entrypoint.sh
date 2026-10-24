@@ -22,28 +22,37 @@
 # SOFTWARE.
 #
 
-# Default the TZ environment variable to UTC.
 TZ=${TZ:-UTC}
 export TZ
 
-# Set environment variable that holds the Internal Docker IP
 INTERNAL_IP=$(ip route get 1 | awk '{print $(NF-2);exit}')
 export INTERNAL_IP
 
-# Switch to the container's working directory
 cd /home/container || exit 1
 
-# Print Java version
-printf "\u001b[1m\u001b[91m[${GITHUB_USER}@image] \u001b[0mjava -version\n"
+PREFIX=$(printf '\033[1m\033[91m[%s@image] \033[0m' "${GITHUB_USER}")
+
+printf '%sjava -version\n' "${PREFIX}"
 java -version
 
-# Convert all of the "{{VARIABLE}}" parts of the command into the expected shell
-# variable format of "${VARIABLE}" before evaluating the string and automatically
-# replacing the values.
-PARSED=$(echo "${STARTUP}" | sed -e 's/{{/${/g' -e 's/}}/}/g' | eval echo "$(cat -)")
+# Wings hands over the egg's startup line with {{VARIABLE}} placeholders and sets each
+# variable as an env var. Rewriting {{X}} to ${X} and letting one shell parse the line
+# expands every value exactly once: a value is never parsed as shell code, while the
+# egg's own line keeps normal shell quoting.
+PLACEHOLDER='\{\{([A-Za-z_][A-Za-z0-9_]*)\}\}'
+COMMAND=$(sed -E "s/${PLACEHOLDER}/\${\1}/g" <<<"${STARTUP}")
 
-# Display the command we're running in the output, and then execute it with the env
-# from the container itself.
-printf "\u001b[1m\u001b[91m[${GITHUB_USER}@image] \u001b[0m%s\n" "$PARSED"
-# shellcheck disable=SC2086
-eval ${PARSED}
+# Same substitution for the console line, done as plain text so nothing is executed.
+SHOWN=""
+REST=${STARTUP}
+while [[ ${REST} =~ ${PLACEHOLDER} ]]; do
+    NAME=${BASH_REMATCH[1]}
+    SHOWN+=${REST%%"${BASH_REMATCH[0]}"*}${!NAME:-}
+    REST=${REST#*"${BASH_REMATCH[0]}"}
+done
+SHOWN+=${REST}
+
+printf '%s%s\n' "${PREFIX}" "${SHOWN}"
+
+# exec, so the server (not this script) receives the stop signal from Wings.
+exec bash -c "${COMMAND}"
