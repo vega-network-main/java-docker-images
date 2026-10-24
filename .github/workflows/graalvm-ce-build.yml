@@ -54,7 +54,7 @@ jobs:
             GITHUB_USER=${{ github.repository_owner }}
 
       - name: Smoke test
-        run: tests/smoke.sh smoke-test:latest
+        run: bash tests/smoke.sh smoke-test:latest
 
       - name: Login to GHCR
         if: env.PUBLISH == 'true'

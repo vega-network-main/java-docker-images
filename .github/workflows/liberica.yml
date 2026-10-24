@@ -53,7 +53,7 @@ jobs:
             LIBC_TYPE=${{ matrix.libc }}
 
       - name: Smoke test
-        run: tests/smoke.sh smoke-test:latest
+        run: bash tests/smoke.sh smoke-test:latest
 
       - name: Login to GHCR
         if: env.PUBLISH == 'true'
